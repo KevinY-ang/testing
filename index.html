@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects Showcase</title>
+    <title>Engineering Projects Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -13,10 +13,10 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #ffffff;
             min-height: 100vh;
             padding: 2rem;
-            color: #333;
+            color: #000000;
         }
 
         .container {
@@ -27,7 +27,7 @@
         header {
             text-align: center;
             margin-bottom: 3rem;
-            color: white;
+            position: relative;
         }
 
         h1 {
@@ -38,7 +38,7 @@
 
         .subtitle {
             font-size: 1.2rem;
-            opacity: 0.9;
+            opacity: 0.7;
         }
 
         .controls {
@@ -46,48 +46,34 @@
             gap: 1rem;
             margin-bottom: 2rem;
             flex-wrap: wrap;
-        }
-
-        .search-box {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            justify-content: center;
         }
 
         .filter-buttons {
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .filter-btn {
             padding: 0.75rem 1.5rem;
-            border: none;
+            border: 2px solid #000000;
             border-radius: 8px;
-            background: white;
-            color: #667eea;
+            background: transparent;
+            color: #000000;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .filter-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
         .filter-btn.active {
-            background: #667eea;
-            color: white;
+            background: #000000;
+            color: #ffffff;
         }
 
         .projects-grid {
@@ -98,10 +84,10 @@
         }
 
         .project-card {
-            background: white;
+            background: transparent;
+            border: 2px solid #000000;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             cursor: pointer;
             animation: fadeIn 0.5s ease;
@@ -126,12 +112,12 @@
         .project-image {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #f5f5f5;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
             font-size: 3rem;
+            border-bottom: 2px solid #000000;
         }
 
         .project-content {
@@ -142,14 +128,13 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            color: #2d3748;
         }
 
         .project-category {
             display: inline-block;
             padding: 0.25rem 0.75rem;
-            background: #edf2f7;
-            color: #667eea;
+            background: #000000;
+            color: #ffffff;
             border-radius: 4px;
             font-size: 0.875rem;
             font-weight: 600;
@@ -157,51 +142,175 @@
         }
 
         .project-description {
-            color: #718096;
+            opacity: 0.7;
             line-height: 1.6;
             margin-bottom: 1rem;
         }
 
-        .project-tags {
+        .project-specs {
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
             margin-bottom: 1rem;
         }
 
-        .tag {
+        .spec {
             padding: 0.25rem 0.5rem;
-            background: #f7fafc;
-            color: #4a5568;
+            background: transparent;
+            border: 1px solid #000000;
             border-radius: 4px;
             font-size: 0.75rem;
         }
 
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-link {
+        .view-details {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            color: #667eea;
-            text-decoration: none;
             font-weight: 600;
             font-size: 0.875rem;
-            transition: color 0.3s ease;
-        }
-
-        .project-link:hover {
-            color: #764ba2;
         }
 
         .no-results {
             text-align: center;
             padding: 4rem 2rem;
-            color: white;
             font-size: 1.2rem;
+            opacity: 0.7;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            border: 3px solid #000000;
+            border-radius: 16px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 2px solid #000000;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: 2px solid #000000;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: #000000;
+            color: #ffffff;
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 350px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border: 2px solid #000000;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .modal-description {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .modal-section p, .modal-section ul {
+            line-height: 1.8;
+            opacity: 0.8;
+        }
+
+        .modal-section ul {
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+
+        .modal-specs {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .modal-spec {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 2px solid #000000;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
         }
 
         @media (max-width: 768px) {
@@ -213,12 +322,19 @@
                 grid-template-columns: 1fr;
             }
 
-            .controls {
-                flex-direction: column;
+            .modal-content {
+                width: 95%;
+                margin: 1rem;
             }
 
-            .filter-buttons {
-                justify-content: center;
+            .modal-header,
+            .modal-body {
+                padding: 1.5rem;
+            }
+
+            .modal-image {
+                height: 200px;
+                font-size: 3rem;
             }
         }
     </style>
@@ -226,136 +342,215 @@
 <body>
     <div class="container">
         <header>
-            <h1>My Projects</h1>
-            <p class="subtitle">Explore my latest work and creations</p>
+            <h1>Engineering Portfolio</h1>
+            <p class="subtitle">SolidWorks & Physical Projects</p>
         </header>
 
         <div class="controls">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search projects...">
-            </div>
             <div class="filter-buttons">
-                <button class="filter-btn active" data-category="all">All</button>
-                <button class="filter-btn" data-category="web">Web</button>
-                <button class="filter-btn" data-category="mobile">Mobile</button>
-                <button class="filter-btn" data-category="design">Design</button>
-                <button class="filter-btn" data-category="other">Other</button>
+                <button class="filter-btn active" data-category="all">All Projects</button>
+                <button class="filter-btn" data-category="solidworks">SolidWorks</button>
+                <button class="filter-btn" data-category="mechanical">Mechanical</button>
+                <button class="filter-btn" data-category="fabrication">Fabrication</button>
+                <button class="filter-btn" data-category="prototype">Prototype</button>
             </div>
         </div>
 
         <div class="projects-grid" id="projectsGrid"></div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" id="closeModal">×</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
     <script>
         // Sample projects data - Replace with your actual projects
         const projects = [
             {
-                title: "Electromagnetic Generator",
-                category: "SolidWorks",
-                description: "Designed in SolidWorks, printed with Ender V2",
-                tags: ["React", "Node.js", "MongoDB", "Stripe"],
-                icon: "🛒",
-                demoUrl: "#",
-                githubUrl: "#"
+                title: "Robotic Gripper Assembly",
+                category: "solidworks",
+                description: "Designed a pneumatic gripper system for automated pick-and-place operations.",
+                fullDescription: "Complete CAD design of a pneumatic gripper assembly including actuators, mounting brackets, and custom jaw designs. The system was optimized for light-weight objects with delicate handling requirements.",
+                icon: "🤖",
+                specs: ["SolidWorks", "Pneumatics", "Aluminum 6061"],
+                details: {
+                    objective: "Design a cost-effective gripper system capable of handling objects ranging from 10-150mm in diameter with minimal deformation.",
+                    approach: "Used SolidWorks to model all components, performed FEA analysis on critical stress points, and created detailed assembly drawings for manufacturing.",
+                    outcome: "Successfully integrated into production line, reducing cycle time by 15% and improving handling accuracy."
+                }
             },
             {
-                title: "Task Manager App",
-                category: "mobile",
-                description: "Cross-platform mobile app for task management with real-time sync and notifications.",
-                tags: ["React Native", "Firebase", "Redux"],
-                icon: "📱",
-                demoUrl: "#",
-                githubUrl: "#"
+                title: "Custom Bike Frame",
+                category: "fabrication",
+                description: "Fabricated a custom chromoly steel bike frame with TIG welding.",
+                fullDescription: "Hand-built bicycle frame using 4130 chromoly tubing. All joints TIG welded with custom geometry designed for urban commuting and light touring.",
+                icon: "🚴",
+                specs: ["TIG Welding", "Chromoly Steel", "Custom Geometry"],
+                details: {
+                    objective: "Create a durable, lightweight frame optimized for city riding with rack and fender mounts.",
+                    approach: "Designed frame geometry in CAD, cut tubes to precise angles using jigs, then TIG welded all joints. Post-weld heat treatment applied to reduce stress.",
+                    outcome: "Frame weighs 2.1kg and has been ridden over 3000km without issues. Client reported excellent handling characteristics."
+                }
             },
             {
-                title: "Portfolio Website",
-                category: "web",
-                description: "Modern, responsive portfolio website with smooth animations and dark mode support.",
-                tags: ["HTML", "CSS", "JavaScript", "GSAP"],
-                icon: "💼",
-                demoUrl: "#",
-                githubUrl: "#"
+                title: "3D Printed Prosthetic Hand",
+                category: "prototype",
+                description: "Developed a functional prosthetic hand prototype using 3D printing and cable-driven mechanisms.",
+                fullDescription: "Low-cost prosthetic hand design featuring individually actuated fingers controlled by wrist movements. Designed for accessibility and ease of assembly.",
+                icon: "✋",
+                specs: ["3D Printing", "PLA/PETG", "Cable System"],
+                details: {
+                    objective: "Design an affordable prosthetic alternative that could be manufactured with consumer-grade 3D printers.",
+                    approach: "Iterated through 5 design versions, testing different finger joint mechanisms and materials. Final design uses PETG for durability with elastic cord return springs.",
+                    outcome: "Total material cost under $50. Successfully demonstrated grip strength of 8kg and fine motor control for small object manipulation."
+                }
             },
             {
-                title: "Weather Dashboard",
-                category: "web",
-                description: "Real-time weather dashboard with forecasts, maps, and location-based alerts.",
-                tags: ["Vue.js", "Weather API", "Charts.js"],
-                icon: "🌤️",
-                demoUrl: "#",
-                githubUrl: "#"
+                title: "CNC Machine Retrofit",
+                category: "mechanical",
+                description: "Converted manual mill to CNC operation with custom electronics and motor mounts.",
+                fullDescription: "Complete retrofit of a Bridgeport-style manual mill to 3-axis CNC control, including structural reinforcement and precision ball screw installation.",
+                icon: "⚙️",
+                specs: ["Ball Screws", "Stepper Motors", "LinuxCNC"],
+                details: {
+                    objective: "Upgrade workshop capability to include CNC machining while maintaining manual operation functionality.",
+                    approach: "Designed and fabricated motor mounts, couplings, and electronic enclosures. Installed precision ball screws on all axes with proper preload. Configured LinuxCNC for machine control.",
+                    outcome: "Achieved positional accuracy of ±0.05mm and repeatability of ±0.02mm. Successfully machined complex aluminum and steel parts."
+                }
             },
             {
-                title: "Fitness Tracker",
-                category: "mobile",
-                description: "Mobile fitness app with workout tracking, progress analytics, and social features.",
-                tags: ["Flutter", "Dart", "SQLite"],
-                icon: "💪",
-                demoUrl: "#",
-                githubUrl: "#"
+                title: "Solar Tracker Mount",
+                category: "solidworks",
+                description: "Dual-axis solar panel tracking system with gear-driven positioning.",
+                fullDescription: "Engineered mounting system for solar panels with automatic sun tracking using dual linear actuators and microcontroller-based positioning.",
+                icon: "☀️",
+                specs: ["SolidWorks", "Linear Actuators", "Weather-Resistant"],
+                details: {
+                    objective: "Maximize solar panel efficiency through active sun tracking while maintaining structural stability in high winds.",
+                    approach: "Modeled entire assembly in SolidWorks including stress analysis for wind loads up to 120 km/h. Used powder-coated steel construction with sealed bearings.",
+                    outcome: "Increased energy capture by 35% compared to fixed mounting. System has operated reliably through 2 winter seasons."
+                }
             },
             {
-                title: "Brand Identity",
-                category: "design",
-                description: "Complete brand identity design including logo, color palette, and style guide.",
-                tags: ["Figma", "Illustrator", "Branding"],
-                icon: "🎨",
-                demoUrl: "#",
-                githubUrl: null
+                title: "Hydraulic Press Build",
+                category: "fabrication",
+                description: "Constructed a 20-ton hydraulic press for metal forming and press-fit operations.",
+                fullDescription: "Heavy-duty shop press built from structural steel with manual hydraulic pump and safety features including pressure relief and load monitoring.",
+                icon: "🔨",
+                specs: ["Structural Steel", "Hydraulics", "20-Ton Capacity"],
+                details: {
+                    objective: "Build workshop equipment capable of press-fitting bearings, forming sheet metal, and general pressing operations.",
+                    approach: "Welded H-beam frame using 6mm steel plate. Installed bottle jack with custom pressure gauge. Added adjustable bed height and safety shields.",
+                    outcome: "Successfully press-fits bearings and bushings with precise force control. Frame shows no deflection under maximum load."
+                }
             },
             {
-                title: "Chat Application",
-                category: "web",
-                description: "Real-time chat application with group messaging, file sharing, and video calls.",
-                tags: ["Socket.io", "WebRTC", "Express"],
-                icon: "💬",
-                demoUrl: "#",
-                githubUrl: "#"
+                title: "Drone Landing Gear",
+                category: "prototype",
+                description: "Spring-loaded retractable landing gear for racing drone applications.",
+                fullDescription: "Lightweight carbon fiber landing gear with servo-actuated retraction mechanism. Designed to minimize aerodynamic drag during flight.",
+                icon: "🚁",
+                specs: ["Carbon Fiber", "Servo Control", "Spring-Loaded"],
+                details: {
+                    objective: "Create retractable landing gear that adds less than 50g to drone weight while providing reliable ground stability.",
+                    approach: "Prototyped multiple designs in CAD, then fabricated using carbon fiber tubes and 3D printed brackets. Integrated servo control with flight controller.",
+                    outcome: "Final weight of 42g including servos. Retraction mechanism operates in under 2 seconds with no flight control interference."
+                }
             },
             {
-                title: "Data Visualization Tool",
-                category: "other",
-                description: "Interactive data visualization tool for analyzing and presenting complex datasets.",
-                tags: ["D3.js", "Python", "Pandas"],
-                icon: "📊",
-                demoUrl: "#",
-                githubUrl: "#"
+                title: "Vacuum Chamber System",
+                category: "mechanical",
+                description: "Acrylic vacuum chamber for degassing and resin casting applications.",
+                fullDescription: "Custom-built vacuum system using thick acrylic walls with aluminum base plate. Includes pressure gauge, release valve, and mounting points for various fixtures.",
+                icon: "⚗️",
+                specs: ["Acrylic", "Vacuum Pump", "Pressure Rated"],
+                details: {
+                    objective: "Create a transparent vacuum chamber for degassing silicone and resin casting that allows visual monitoring.",
+                    approach: "Machined aluminum base plate with O-ring groove for seal. Cut and polished 12mm acrylic walls. Pressure tested to -29 inHg.",
+                    outcome: "Successfully removes all air bubbles from resin and silicone. Has processed over 100 casting projects without seal failure."
+                }
             }
         ];
 
         let currentFilter = 'all';
-        let searchQuery = '';
+
+        function openModal(project) {
+            const modal = document.getElementById('projectModal');
+            const modalBody = document.getElementById('modalBody');
+            
+            modalBody.innerHTML = `
+                <div class="modal-image">${project.icon}</div>
+                <h2 class="modal-title">${project.title}</h2>
+                <span class="project-category">${project.category}</span>
+                
+                <div class="modal-section">
+                    <p>${project.fullDescription}</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Specifications</h3>
+                    <div class="modal-specs">
+                        ${project.specs.map(spec => `<span class="modal-spec">${spec}</span>`).join('')}
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Project Objective</h3>
+                    <p>${project.details.objective}</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Approach</h3>
+                    <p>${project.details.approach}</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Outcome</h3>
+                    <p>${project.details.outcome}</p>
+                </div>
+            `;
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
 
         function renderProjects() {
             const grid = document.getElementById('projectsGrid');
             
             const filtered = projects.filter(project => {
-                const matchesCategory = currentFilter === 'all' || project.category === currentFilter;
-                const matchesSearch = project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                                    project.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                                    project.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-                return matchesCategory && matchesSearch;
+                return currentFilter === 'all' || project.category === currentFilter;
             });
 
             if (filtered.length === 0) {
-                grid.innerHTML = '<div class="no-results">No projects found. Try adjusting your filters.</div>';
+                grid.innerHTML = '<div class="no-results">No projects found in this category.</div>';
                 return;
             }
 
-            grid.innerHTML = filtered.map(project => `
-                <div class="project-card">
+            grid.innerHTML = filtered.map((project, index) => `
+                <div class="project-card" onclick="openModal(projects[${projects.indexOf(project)}])">
                     <div class="project-image">${project.icon}</div>
                     <div class="project-content">
                         <h3 class="project-title">${project.title}</h3>
                         <span class="project-category">${project.category}</span>
                         <p class="project-description">${project.description}</p>
-                        <div class="project-tags">
-                            ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        <div class="project-specs">
+                            ${project.specs.map(spec => `<span class="spec">${spec}</span>`).join('')}
                         </div>
-                        <div class="project-links">
-                            ${project.demoUrl ? `<a href="${project.demoUrl}" class="project-link">🔗 View Demo</a>` : ''}
-                            ${project.githubUrl ? `<a href="${project.githubUrl}" class="project-link">💻 GitHub</a>` : ''}
-                        </div>
+                        <span class="view-details">📋 View Full Details</span>
                     </div>
                 </div>
             `).join('');
@@ -371,10 +566,19 @@
             });
         });
 
-        // Search
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            searchQuery = e.target.value;
-            renderProjects();
+        // Modal controls
+        document.getElementById('closeModal').addEventListener('click', closeModal);
+        document.getElementById('projectModal').addEventListener('click', (e) => {
+            if (e.target.id === 'projectModal') {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
         });
 
         // Initial render
