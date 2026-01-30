@@ -469,6 +469,29 @@
            RESPONSIVE DESIGN - MOBILE/TABLET
            Adjusts layout and sizing for screens 768px wide or smaller
            ============================================ */
+        /* PDF Download Button */
+        .pdf-download-btn {
+            display: inline-block;
+            width: 100%;
+            padding: 1rem;
+            margin-top: 1rem;
+            background: #000000;
+            color: #ffffff;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid #000000;
+        }
+        
+        .pdf-download-btn:hover {
+            background: #ffffff;
+            color: #000000;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
         @media (max-width: 768px) {
             /* Smaller main heading on mobile */
             h1 {
@@ -624,6 +647,7 @@
                 description: "Technical drawing for CHE 181 - Custom stopcock design for laboratory separatory funnel applications.",
                 fullDescription: "Detailed engineering drawing for a separatory funnel stopcock component. Complete with precise dimensions, thread specifications (M11x1.5), and manufacturing notes. All dimensions in millimeters with left-right symmetry about centerline.",
                 icon: "images/CHE181_A3.jpg",
+                pdfUrl: "palcehler:",
                 specs: ["SolidWorks", "Technical Drawing", "M11x1.5 Thread"],
                 details: {
                     objective: "Design a functional stopcock component for laboratory separatory funnel with precise tolerances and thread specifications.",
@@ -768,6 +792,9 @@
                 <div class="modal-image">
                     ${project.icon.startsWith('data:image') || project.icon.includes('/') || project.icon.includes('.') ? `<img src="${project.icon}" style="width: 100%; height: 100%; object-fit: contain;" alt="${project.title}">` : project.icon}
                 </div>
+                
+                ${project.pdfUrl ? `<a href="${project.pdfUrl}" class="pdf-download-btn" target="_blank">📄 View Full PDF</a>` : ''}
+                
                 <h2 class="modal-title">${project.title}</h2>
                 <span class="project-category">${project.category}</span>
                 
