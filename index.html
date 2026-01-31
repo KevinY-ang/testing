@@ -276,7 +276,7 @@
         }
 
         /* Container for specification tags */
-        .project-specs {
+        .project-tags {
             display: flex;
             gap: 0.5rem;
             flex-wrap: wrap;
@@ -284,7 +284,7 @@
         }
 
         /* Individual specification tag (e.g., "SolidWorks", "Aluminum 6061") */
-        .spec {
+        .tag {
             padding: 0.25rem 0.5rem;
             background: transparent;
             border: 1px solid #000000;
@@ -448,7 +448,7 @@
         }
 
         /* Container for specification tags in modal */
-        .modal-specs {
+        .modal-tags {
             display: flex;
             gap: 0.75rem;
             flex-wrap: wrap;
@@ -456,7 +456,7 @@
         }
 
         /* Individual specification tag in modal (larger than card version) */
-        .modal-spec {
+        .modal-tag {
             padding: 0.5rem 1rem;
             background: transparent;
             border: 2px solid #000000;
@@ -636,7 +636,7 @@
            - description: Short summary shown on card
            - fullDescription: Longer description shown in modal
            - icon: Emoji displayed on card and in modal
-           - specs: Array of specification tags (e.g., materials, tools)
+           - tags: Array of specification tags (e.g., materials, tools)
            - details: Object with objective, approach, and outcome
            
            TO ADD A NEW PROJECT: Copy an existing project object and modify the values
@@ -649,7 +649,7 @@
                 fullDescription: "Detailed engineering drawing for a separatory funnel stopcock component. Complete with precise dimensions, thread specifications (M11x1.5), and manufacturing notes. All dimensions in millimeters with left-right symmetry about centerline.",
                 icon: "images/CHE181_A3.jpg",
                 pdfUrl: "pdfs/CHE181_A3.pdf",
-                specs: ["AutoCAD", "Assignment", "Technical drawing"],
+                tags: ["AutoCAD", "Assignment", "Technical drawing"],
                 details: {
                     objective: "Design a functional stopcock component for laboratory separatory funnel with precise tolerances and thread specifications.",
                     approach: "Created detailed 2D technical drawing with orthographic projections showing all critical dimensions, radii (R3, R4), and through-hole specifications (Ø4 THRU, Ø12). Included manufacturing notes for symmetry and thread cutting.",
@@ -664,7 +664,7 @@
                 fullDescription: "Complete CAD design of a pneumatic gripper assembly including actuators, mounting brackets, and custom jaw designs. The system was optimized for light-weight objects with delicate handling requirements.",
                 icon: "images/CHE181_A2.png",
                 pdfUrl: "pdfs/CHE181_A2.pdf",
-                specs: ["SolidWorks", "Pneumatics", "Aluminum 6061"],
+                tags: ["SolidWorks", "Pneumatics", "Aluminum 6061"],
                 details: {
                     objective: "Design a cost-effective gripper system capable of handling objects ranging from 10-150mm in diameter with minimal deformation.",
                     approach: "Used SolidWorks to model all components, performed FEA analysis on critical stress points, and created detailed assembly drawings for manufacturing.",
@@ -678,7 +678,7 @@
                 fullDescription: "Hand-built bicycle frame using 4130 chromoly tubing. All joints TIG welded with custom geometry designed for urban commuting and light touring.",
                 icon: "images/CHE181_P&ID.png",
                 pdfUrl: "pdfs/CHE181_P&ID.pdf",
-                specs: ["TIG Welding", "Chromoly Steel", "Custom Geometry"],
+                tags: ["TIG Welding", "Chromoly Steel", "Custom Geometry"],
                 details: {
                     objective: "Create a durable, lightweight frame optimized for city riding with rack and fender mounts.",
                     approach: "Designed frame geometry in CAD, cut tubes to precise angles using jigs, then TIG welded all joints. Post-weld heat treatment applied to reduce stress.",
@@ -691,7 +691,7 @@
                 description: "Developed a functional prosthetic hand prototype using 3D printing and cable-driven mechanisms.",
                 fullDescription: "Low-cost prosthetic hand design featuring individually actuated fingers controlled by wrist movements. Designed for accessibility and ease of assembly.",
                 icon: "✋",
-                specs: ["3D Printing", "PLA/PETG", "Cable System"],
+                tags: ["3D Printing", "PLA/PETG", "Cable System"],
                 details: {
                     objective: "Design an affordable prosthetic alternative that could be manufactured with consumer-grade 3D printers.",
                     approach: "Iterated through 5 design versions, testing different finger joint mechanisms and materials. Final design uses PETG for durability with elastic cord return springs.",
@@ -704,7 +704,7 @@
                 description: "Converted manual mill to CNC operation with custom electronics and motor mounts.",
                 fullDescription: "Complete retrofit of a Bridgeport-style manual mill to 3-axis CNC control, including structural reinforcement and precision ball screw installation.",
                 icon: "⚙️",
-                specs: ["Ball Screws", "Stepper Motors", "LinuxCNC"],
+                tags: ["Ball Screws", "Stepper Motors", "LinuxCNC"],
                 details: {
                     objective: "Upgrade workshop capability to include CNC machining while maintaining manual operation functionality.",
                     approach: "Designed and fabricated motor mounts, couplings, and electronic enclosures. Installed precision ball screws on all axes with proper preload. Configured LinuxCNC for machine control.",
@@ -717,7 +717,7 @@
                 description: "Dual-axis solar panel tracking system with gear-driven positioning.",
                 fullDescription: "Engineered mounting system for solar panels with automatic sun tracking using dual linear actuators and microcontroller-based positioning.",
                 icon: "☀️",
-                specs: ["SolidWorks", "Linear Actuators", "Weather-Resistant"],
+                tags: ["SolidWorks", "Linear Actuators", "Weather-Resistant"],
                 details: {
                     objective: "Maximize solar panel efficiency through active sun tracking while maintaining structural stability in high winds.",
                     approach: "Modeled entire assembly in SolidWorks including stress analysis for wind loads up to 120 km/h. Used powder-coated steel construction with sealed bearings.",
@@ -730,7 +730,7 @@
                 description: "Constructed a 20-ton hydraulic press for metal forming and press-fit operations.",
                 fullDescription: "Heavy-duty shop press built from structural steel with manual hydraulic pump and safety features including pressure relief and load monitoring.",
                 icon: "🔨",
-                specs: ["Structural Steel", "Hydraulics", "20-Ton Capacity"],
+                tags: ["Structural Steel", "Hydraulics", "20-Ton Capacity"],
                 details: {
                     objective: "Build workshop equipment capable of press-fitting bearings, forming sheet metal, and general pressing operations.",
                     approach: "Welded H-beam frame using 6mm steel plate. Installed bottle jack with custom pressure gauge. Added adjustable bed height and safety shields.",
@@ -743,7 +743,7 @@
                 description: "Spring-loaded retractable landing gear for racing drone applications.",
                 fullDescription: "Lightweight carbon fiber landing gear with servo-actuated retraction mechanism. Designed to minimize aerodynamic drag during flight.",
                 icon: "🚁",
-                specs: ["Carbon Fiber", "Servo Control", "Spring-Loaded"],
+                tags: ["Carbon Fiber", "Servo Control", "Spring-Loaded"],
                 details: {
                     objective: "Create retractable landing gear that adds less than 50g to drone weight while providing reliable ground stability.",
                     approach: "Prototyped multiple designs in CAD, then fabricated using carbon fiber tubes and 3D printed brackets. Integrated servo control with flight controller.",
@@ -756,7 +756,7 @@
                 description: "Acrylic vacuum chamber for degassing and resin casting applications.",
                 fullDescription: "Custom-built vacuum system using thick acrylic walls with aluminum base plate. Includes pressure gauge, release valve, and mounting points for various fixtures.",
                 icon: "⚗️",
-                specs: ["Acrylic", "Vacuum Pump", "Pressure Rated"],
+                tags: ["Acrylic", "Vacuum Pump", "Pressure Rated"],
                 details: {
                     objective: "Create a transparent vacuum chamber for degassing silicone and resin casting that allows visual monitoring.",
                     approach: "Machined aluminum base plate with O-ring groove for seal. Cut and polished 12mm acrylic walls. Pressure tested to -29 inHg.",
@@ -807,8 +807,8 @@
                 
                 <div class="modal-section">
                     <h3>Specifications</h3>
-                    <div class="modal-specs">
-                        ${project.specs.map(spec => `<span class="modal-spec">${spec}</span>`).join('')}
+                    <div class="modal-tags">
+                        ${project.tags.map(spec => `<span class="modal-spec">${spec}</span>`).join('')}
                     </div>
                 </div>
                 
@@ -886,8 +886,8 @@
                         <h3 class="project-title">${project.title}</h3>
                         <span class="project-category">${project.category}</span>
                         <p class="project-description">${project.description}</p>
-                        <div class="project-specs">
-                            ${project.specs.map(spec => `<span class="spec">${spec}</span>`).join('')}
+                        <div class="project-tags">
+                            ${project.tags.map(spec => `<span class="spec">${spec}</span>`).join('')}
                         </div>
                         <span class="view-details">📋 View Full Details</span>
                     </div>
