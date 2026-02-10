@@ -22,11 +22,11 @@
         .hero-section {
             background-image: url('images/CHE181_A2.png');
             background-size: cover;
-            background-position: center;
+            background-position: center 22%;
             background-repeat: no-repeat;
-            background-attachment: fixed;
             padding: 2rem;
             position: relative;
+            background-attachment: fixed;
         }
 
         .hero-section::before {
@@ -84,7 +84,7 @@
             border: 2px solid #000000;
             border-radius: 12px;
             text-align: center;
-            background: #d1eaf0;
+            background: #ffffff;
         }
 
         .about-avatar {
@@ -505,9 +505,6 @@
                         <img src="images/portrait.jpg" alt="Kevin Portrait" width="180px" height="150px">
                     </div>
                     <h2>About Me</h2>
-                    <p>
-                        Hi!
-                    </p>
                     <p> 
                         I'm a chemical engineer passionate about bringing ideas to life through coding, 
                         CAD design, and hands-on prototyping. With experience in a variety of 
@@ -578,8 +575,10 @@
                 specs: ["SolidWorks", "Project", "Prototype"],
                 details: {
                     objective: "Build a functional electromagnetic generator from first principles to better understand energy generation, with the goal of producing enough power to light an LED.",
-                    approach: "Designed the initial prototype in SolidWorks focusing on proof-of-concept rather than optimisation. The system uses a rotating magnetic wheel to induce current in stationary coils. Assembled and tested the prototype to validate electromagnetic theory through hands-on experimentation.",
-                    outcome: "Successfully generated measurable electrical output, confirming the electromagnetic principles. Current output is low but functional. Plans for V2 include implementing a gear system for the magnetic wheel rotation and improved electrical connections for more reliable LED testing and power output measurement."
+                    approach: ["Designed the initial prototype in SolidWorks focusing on proof-of-concept rather than optimisation",
+                               "Built system using a rotating magnetic wheel to induce current in stationary coils",
+                               "Assembled and tested prototype to validate electromagnetic induction principles through hands-on experimentation"],
+                    outcome: "Successfully generated measurable electrical output, confirming the electromagnetic principles. Current output is insufficient to power a LED. Plans for V2 include implementing a gear system for the magnetic wheel rotation and improved electrical connections for more reliable power generation and output measurement."
                 }
             },
             {
@@ -593,13 +592,12 @@
                     objective: "Develop a comprehensive Excel-based system to manage a personal Pokémon Trading Card collection, enabling efficient inventory tracking, transaction monitoring, and real-time price verification while vending at card shows.",
                     approach: [
                         "Created a multi-column spreadsheet with 13 key data fields capturing complete card and transaction information",
-                        "Organized entries chronologically from May 2025 through October 2025",
+                        "Organized and tracked over 800 transactions, enabling instant inventory lookup during live sales",
                         "Implemented standardized categories for card type (Raw, Sealed, Graded), condition (NM, MP, HP, PSA), and transaction type (Trade In, Trade Out, Sold, Bought)",
-                        "Integrated Power Query for dynamic data filtering and manipulation",
-                        "Built custom queries to segment inventory by transaction type, set, condition, and date ranges",
+                        "Integrated Power Query to develop a public spreadsheet displaying card availability while maintaining private transaction data",
                         "Developed pricing formulas for rapid market value lookup during card shows"
                     ],
-                    outcome: "Successfully created a functional inventory management system tracking 40+ cards across multiple Pokémon TCG sets with complete transaction history. The system provides instant access to card availability, pricing data, and trading partner records, streamlining the vending process and enabling data-driven decisions at card shows."
+                    outcome: "Successfully created a functional inventory management system tracking 1000+ major cards across over 800 transactions. The system provides instant access to card availability, pricing data, and trading partner records, streamlining the vending process and enabling data-driven decisions at card shows."
                 }
             },
             {
